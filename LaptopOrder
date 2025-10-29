@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+interface Order {
+    void place(String item);
+}
+
+class Online implements Order {
+    public void place(String item) {
+        System.out.println("Online order placed for: " + item);
+    }
+}
+
+class Phone implements Order {
+    public void place(String item) {
+        System.out.println("Phone order placed for: " + item);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter type (online/phone): ");
+        String type = s.nextLine();
+        System.out.print("Enter item: ");
+        String item = s.nextLine();
+        Order o = type.equals("online") ? new Online() : new Phone();
+        o.place(item);
+    }
+}
