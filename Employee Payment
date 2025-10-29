@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter employee type (full/part): ");
+        String employeeType = scanner.nextLine();
+
+        System.out.print("Enter name, rate per hour, and hours: ");
+        String input = scanner.nextLine();
+        String[] parts = input.split(" ");
+
+        String name = parts[0];
+        double rate = Double.parseDouble(parts[1]);
+        double hours = Double.parseDouble(parts[2]);
+
+        double pay;
+        if (employeeType.equalsIgnoreCase("full")) {
+        
+            pay = rate * hours * 1.10;
+        } else {
+            
+            pay = rate * hours;
+        }
+
+        System.out.println("Pay for " + name + employeeType + pay);
+        scanner.close();
+    }
+}
