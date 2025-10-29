@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Car started.");
+        System.out.print("Enter speed increment: ");
+        int increment = scanner.nextInt();
+        System.out.println("Car speed: " + increment + " km/h");
+        scanner.close();
+    }
+}
