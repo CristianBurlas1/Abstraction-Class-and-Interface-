@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+interface Printable {
+    void print(String content);
+}
+
+class TextPrinter implements Printable {
+    public void print(String content) {
+        System.out.println("Printing text: " + content);
+    }
+}
+
+class ImagePrinter implements Printable {
+    public void print(String content) {
+        System.out.println("Printing image: " + content);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Choose printer (text/image): ");
+        String type = s.next().toLowerCase();
+        System.out.print("Enter content: ");
+        s.nextLine(); // Consume newline
+        String content = s.nextLine();
+
+        Printable printer;
+        if (type.equals("text")) {
+            printer = new TextPrinter();
+        } else {
+            printer = new ImagePrinter();
+        }
+        printer.print(content);
+
+        s.close();
+    }
+}
