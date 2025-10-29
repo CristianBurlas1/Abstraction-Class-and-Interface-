@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+interface BankAccount {
+    void deposit(double amount);
+    void withdraw(double amount);
+}
+
+class Account implements BankAccount {
+    double balance;
+
+    Account(double initialBalance) {
+        this.balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + ", Balance: " + balance);
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrew: " + amount + ", Balance: " + balance);
+        } else {
+            System.out.println("Insufficient balance.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        Account account = new Account(0);
+
+        System.out.print("Enter deposit amount: ");
+        double depositAmount = s.nextDouble();
+        account.deposit(depositAmount);
+
+        System.out.print("Enter withdraw amount: ");
+        double withdrawAmount = s.nextDouble();
+        account.withdraw(withdrawAmount);
+
+        s.close();
+    }
+}
