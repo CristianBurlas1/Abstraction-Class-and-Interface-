@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+abstract class GradeSystem { abstract double avg(double[] g); }
+class StudentGrade extends GradeSystem { double avg(double[] g) { double sum = 0; for (double i : g) sum += i; return sum / g.length; } }
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter 3 grades: ");
+        double[] g = {s.nextDouble(), s.nextDouble(), s.nextDouble()};
+        GradeSystem gs = new StudentGrade();
+        System.out.println("Average: " + gs.avg(g));
+    }
+}
