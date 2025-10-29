@@ -1,12 +1,32 @@
 import java.util.Scanner;
 
+interface Vehicle {
+    void start();
+    void speedUp(int increment);
+}
+
+class Car implements Vehicle {
+    int speed;
+
+    public void start() {
+        System.out.println("Car started.");
+        speed = 0;
+    }
+
+    public void speedUp(int increment) {
+        speed += increment;
+        System.out.println("Car speed: " + speed + " km/h");
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Car started.");
+        Scanner s = new Scanner(System.in);
+        Car car = new Car();
+        car.start();
         System.out.print("Enter speed increment: ");
-        int increment = scanner.nextInt();
-        System.out.println("Car speed: " + increment + " km/h");
-        scanner.close();
+        int increment = s.nextInt();
+        car.speedUp(increment);
+        s.close();
     }
 }
